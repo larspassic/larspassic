@@ -1,5 +1,5 @@
 ### 👋 Hi there, I'm Lars. 🛹
-- 🔭 I’m currently working as a Service Engineer on the M365 ACE team at Microsoft.
+- 🔭 I’m currently working as a Service Engineer on the M365 Advanced Cloud Engineering (ACE) team at Microsoft.
 - 🌱 I’m currently learning C# and .NET at UW Professional and Continuing Education.
 <!--
 **larspassic/larspassic** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.

@@ -1,4 +1,4 @@
-### 👋 Hi there, I'm Lars. 🛹
+### 👋 Hi there, my name is Lars Passic. 🙏👨‍👩‍👧🎮🛹
 - 🔭 I’m currently working as a Service Engineer on the M365 Advanced Cloud Engineering (ACE) team at Microsoft.
 - 🌱 I’m currently learning C# and .NET at UW Professional and Continuing Education.
 <!--

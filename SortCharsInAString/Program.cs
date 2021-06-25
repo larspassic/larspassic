@@ -27,7 +27,14 @@ namespace SortCharsInAString
             {
                 Console.Write($"{item}");
             }
-            
+            Console.WriteLine();
+            charList.Sort();
+
+            Console.WriteLine("Sorted Char string: ");
+            foreach (char item in charList)
+            {
+                Console.Write($"{item}");
+            }
 
             
 

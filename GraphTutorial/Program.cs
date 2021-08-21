@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using GraphTutorial.Graph;
+using System.Globalization;
 
 namespace GraphTutorial
 {
@@ -32,6 +33,18 @@ namespace GraphTutorial
              });
 
             var accessToken = GraphHelper.GetAccessTokenAsync(scopes).Result;
+
+            //Get signed in user
+            var user = GraphHelper.GetMeAsync().Result;
+            Console.WriteLine($"Welcome {user.DisplayName}!\n");
+
+            //Check for timezone and date/time formats in mailbox settings
+            //Use defaults if absent
+            var userTimeZone = !string.IsNullOrEmpty(user.MailboxSettings?.TimeZone) ? user.MailboxSettings?.TimeZone : TimeZoneInfo.Local.StandardName;
+            var userDateFormat = !string.IsNullOrEmpty(user.MailboxSettings?.DateFormat) ? user.MailboxSettings?.DateFormat : CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            var userTimeFormat = !string.IsNullOrEmpty(user.MailboxSettings?.TimeFormat) ? user.MailboxSettings?.TimeFormat : CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+
+
 
             int choice = -1;
 
@@ -66,6 +79,7 @@ namespace GraphTutorial
                         break;
                     case 2:
                         //List the calendar
+                        ListCalendarEvents(userTimeZone, $"{userDateFormat} {userTimeFormat}");
 
                         break;
                     case 3:
@@ -99,6 +113,30 @@ namespace GraphTutorial
             }
 
             return appConfig;
+        }
+
+        //Display the results
+        static string FormatDateTimeTimeZone(Microsoft.Graph.DateTimeTimeZone value, string dateTimeFormat)
+        {
+            //Parse the date/time string from Graph into a DateTime
+            var dateTime = DateTime.Parse(value.DateTime);
+
+            return dateTime.ToString(dateTimeFormat);
+        }
+
+        static void ListCalendarEvents(string userTimeZone, string dateTimeFormat)
+        {
+            var events = GraphHelper.GetCurrentWeekCalendarViewAsync(DateTime.Today, userTimeZone).Result;
+
+            Console.WriteLine($"Events:");
+
+            foreach (var calendarEvent in events)
+            {
+                Console.WriteLine($"Subject: {calendarEvent.Subject}");
+                Console.WriteLine($"     Organizer: {calendarEvent.Organizer}");
+                Console.WriteLine($"     Start: {FormatDateTimeTimeZone(calendarEvent.Start, dateTimeFormat)}");
+                Console.WriteLine($"     End: {FormatDateTimeTimeZone(calendarEvent.End, dateTimeFormat)}");
+            }
         }
     }
 }

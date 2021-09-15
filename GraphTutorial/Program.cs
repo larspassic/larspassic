@@ -138,5 +138,63 @@ namespace GraphTutorial
                 Console.WriteLine($"     End: {FormatDateTimeTimeZone(calendarEvent.End, dateTimeFormat)}");
             }
         }
+
+        //Logit to process whether a user is saying yes or no
+        static bool GetUserYesNo(string prompt)
+        {
+            //This looks like a re-usable prompt
+            Console.Write($"{prompt} (y/n)");
+
+            ConsoleKeyInfo confirm;
+            do
+            {
+                confirm = Console.ReadKey(true);
+
+            }
+            //Continue to read the console key until it is either Y or N
+            while (confirm.Key != ConsoleKey.Y && confirm.Key != ConsoleKey.N);
+
+            Console.WriteLine();
+
+            //Return whether the console key is Y
+            return (confirm.Key == ConsoleKey.Y);
+        }
+
+        //Gets user input for one particular field
+        static string GetUserInput(string fieldName, bool isRequired, Func<string, bool> validate)
+        {
+            //Make the returnValue variable
+            string returnValue = null;
+
+            do
+            {
+                //Prompt the user for input for that particular field
+                Console.Write($"Enter a {fieldName}: ");
+
+                if (!isRequired)
+                {
+                    //Only tease enter to skip if the field is not required
+                    Console.Write($"(ENTER to skip) ");
+                }
+                
+                //Actually collect the input from the user
+                var input = Console.ReadLine();
+
+                //If the string is not null or empty
+                if (!string.IsNullOrEmpty(input))
+                {
+                    //Not sure what this is checking
+                    if (validate.Invoke(input))
+                    {
+                        //Send the input as the return
+                        returnValue = input;
+                    }
+                }
+            }
+
+            while (string.IsNullOrEmpty(returnValue) && isRequired);
+
+            return returnValue;
+        }
     }
 }

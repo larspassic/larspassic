@@ -139,7 +139,7 @@ namespace GraphTutorial
             }
         }
 
-        //Logit to process whether a user is saying yes or no
+        //Logic to process whether a user is saying yes or no
         static bool GetUserYesNo(string prompt)
         {
             //This looks like a re-usable prompt
@@ -195,6 +195,79 @@ namespace GraphTutorial
             while (string.IsNullOrEmpty(returnValue) && isRequired);
 
             return returnValue;
+        }
+
+        static void CreateEvent(string userTimeZone)
+        {
+            //Prompt user for info
+
+            //Require a subject
+            var subject = GetUserInput("subject", true, (input) =>
+            {
+                return GetUserYesNo($"Subject: {input} - is that right?");
+            });
+
+            //Attendees are optional
+            var attendeeList = new List<string>();
+
+            if (GetUserYesNo("Do you want to invite attendees?"))
+            {
+                string attendee = null;
+
+                do
+                {
+                    attendee = GetUserInput("attendee", false, (input) =>
+                    {
+                        return GetUserYesNo($"{input} - add attendee?");
+                    });
+
+                    if (!string.IsNullOrEmpty(attendee))
+                    {
+                        attendeeList.Add(attendee);
+                    }
+                } while (!string.IsNullOrEmpty(attendee));
+            }
+
+            var startString = GetUserInput("event start", true, (input) =>
+            {
+                //Validate that the input is a date
+                return (DateTime.TryParse(input, out var result));
+            });
+
+            var start = DateTime.Parse(startString);
+
+            var endString = GetUserInput("event end", true, (input) =>
+            {
+                //Validate that the input is a date
+                //and is later than start
+                return (DateTime.TryParse(input, out var result) &&
+                    result.CompareTo(start) > 0);
+
+            });
+
+            var end = DateTime.Parse(endString);
+
+            var body = GetUserInput("body", false, (input => { return true; }));
+
+            Console.WriteLine($"Subject: {subject}");
+            Console.WriteLine($"Attendees: {string.Join(";", attendeeList)}");
+            Console.WriteLine($"Start: {start.ToString()}");
+            Console.WriteLine($"End: {end.ToString()}");
+            Console.WriteLine($"Body: {body}");
+            if (GetUserYesNo("Create event?"))
+            {
+                GraphHelper.CreateEvent(
+                    userTimeZone,
+                    subject,
+                    start,
+                    end,
+                    attendeeList,
+                    body).Wait();
+            }
+            else
+            {
+                Console.WriteLine($"Canceled.");
+            }
         }
     }
 }

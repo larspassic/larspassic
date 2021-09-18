@@ -84,6 +84,7 @@ namespace GraphTutorial
                         break;
                     case 3:
                         //Create a new event
+                        CreateEvent(userTimeZone);
 
                         break;
                     default:

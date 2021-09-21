@@ -32,11 +32,13 @@ namespace GraphTutorial.Graph
             return response.Token;
         }
 
+
         public static async Task<User> GetMeAsync()
         {
             try
             {
                 //GET /me
+                //Uses GraphServiceClient to get information about the current user
                 return await graphClient.Me.Request().Select(u => new { u.DisplayName, u.MailboxSettings }).GetAsync();
 
 
@@ -90,6 +92,7 @@ namespace GraphTutorial.Graph
             }
         }
 
+
         private static DateTime GetUtcStartOfWeekInTimeZone(DateTime today, string timeZoneId)
         {
             //Time zone returned by Graph could be Windows or IANA style
@@ -107,6 +110,7 @@ namespace GraphTutorial.Graph
             //convert to UTC
             return TimeZoneInfo.ConvertTimeToUtc(unspecifiedStart, userTimeZone);
         }
+
 
         public static async Task CreateEvent(
             string timeZone,

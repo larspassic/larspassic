@@ -15,6 +15,7 @@ namespace GraphTutorial
 
             var appConfig = LoadAppSettings();
 
+
             if (appConfig == null)
             {
                 Console.WriteLine("Missing or invalid appsettings.json...exiting program");
@@ -45,7 +46,7 @@ namespace GraphTutorial
             var userTimeFormat = !string.IsNullOrEmpty(user.MailboxSettings?.TimeFormat) ? user.MailboxSettings?.TimeFormat : CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
 
 
-
+            //Main program menu loop
             int choice = -1;
 
             while (choice != 0)
@@ -146,6 +147,7 @@ namespace GraphTutorial
             //This looks like a re-usable prompt
             Console.Write($"{prompt} (y/n)");
 
+            //This provides instant feedback and does not wait for the user to press enter
             ConsoleKeyInfo confirm;
             do
             {

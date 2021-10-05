@@ -14,6 +14,7 @@ namespace DogTracker.Repository
             Instance = new DogDbContext();
         }
 
+
         public static DogDbContect Instance { get; private set; }
     }
 }

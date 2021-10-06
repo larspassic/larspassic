@@ -15,11 +15,11 @@ namespace DogTracker.Repository
     //Define the dog object in the repository
     public class DogModel
     {
-        public int DogId { get; set; }
-        public string DogName { get; set; }
-        public string OwnerName { get; set; }
-        public string PrimaryBreed { get; set; }
-        public string SecondaryBreed { get; set; }
+        public int RepositoryDogId { get; set; }
+        public string RepositoryDogName { get; set; }
+        public string RepositoryOwnerName { get; set; }
+        public string RepositoryPrimaryBreed { get; set; }
+        public string RepositorySecondaryBreed { get; set; }
 
     }
     
@@ -33,11 +33,11 @@ namespace DogTracker.Repository
                     .Dog
                     .Select(t => new DogModel
                     {
-                        DogId = t.DogId,
-                        DogName = t.DogName,
-                        OwnerName = t.OwnerName,
-                        PrimaryBreed = t.PrimaryBreed,
-                        SecondaryBreed = t.SecondaryBreed,
+                        RepositoryDogId = t.DogId,
+                        RepositoryDogName = t.DogName,
+                        RepositoryOwnerName = t.OwnerName,
+                        RepositoryPrimaryBreed = t.PrimaryBreed,
+                        RepositorySecondaryBreed = t.SecondaryBreed,
                     }).ToArray();
             }
         }
@@ -47,7 +47,7 @@ namespace DogTracker.Repository
             var dog = DatabaseAccessor.Instance
                 .Dog
                 .Where(t => t.DogId == dogId)
-                .Select(t => new DogModel { DogId = t.DogId, DogName = t.DogName, OwnerName = t.OwnerName, PrimaryBreed = t.PrimaryBreed, SecondaryBreed = t.SecondaryBreed })
+                .Select(t => new DogModel { RepositoryDogId = t.DogId, RepositoryDogName = t.DogName, RepositoryOwnerName = t.OwnerName, RepositoryPrimaryBreed = t.PrimaryBreed, RepositorySecondaryBreed = t.SecondaryBreed })
                 .First();
 
             return dog;

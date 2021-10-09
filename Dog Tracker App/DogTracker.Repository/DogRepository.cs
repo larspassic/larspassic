@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DogTracker.Repository
 {
-    public interface ICategoryRepository
+    public interface IDogRepository
     {
         DogModel[] Dogs { get; }
         DogModel Dog(int dogId);
@@ -23,7 +23,7 @@ namespace DogTracker.Repository
 
     }
     
-    public class DogRepository
+    public class DogRepository : IDogRepository
     {
         public DogModel[] Dogs
         {

@@ -18,6 +18,6 @@ namespace DogTracker.Repository
 
         //This is supposed to be a class/method created by entity framework
         //In the "dog database" project
-        public static DogDbContect Instance { get; private set; }
+        public static DogDbContext Instance { get; private set; }
     }
 }

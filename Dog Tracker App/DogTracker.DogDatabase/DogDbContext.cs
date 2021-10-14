@@ -2,7 +2,8 @@
 
 namespace DogTracker.DogDatabase
 {
-    public class Class1
+    public partial class DogDbContext
     {
+
     }
 }

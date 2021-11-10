@@ -20,9 +20,14 @@ namespace website.Controllers
 
         public IActionResult Index()
         {
+            //Create an object out of the class
+            ImageWidthModel imageWidthModel = new ImageWidthModel();
+
+            //Set the current value of the image width size
+            imageWidthModel.ImageWidth = 480;
             
-            
-            return View();
+            //Send the model in to the view
+            return View(imageWidthModel);
         }
 
         public IActionResult About()

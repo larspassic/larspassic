@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merge Two Sorted Lists", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reverse Integer", "Reverse Integer\Reverse Integer.csproj", "{03080E2C-6490-4611-B91B-03863338A67C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subsets", "Subsets\Subsets.csproj", "{3A2C3B54-B2F0-42DB-A15E-04863B2883A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subsets", "Subsets\Subsets.csproj", "{3A2C3B54-B2F0-42DB-A15E-04863B2883A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unique Paths", "Unique Paths\Unique Paths.csproj", "{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3A2C3B54-B2F0-42DB-A15E-04863B2883A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A2C3B54-B2F0-42DB-A15E-04863B2883A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A2C3B54-B2F0-42DB-A15E-04863B2883A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

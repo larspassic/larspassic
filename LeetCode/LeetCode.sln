@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reverse Integer", "Reverse 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subsets", "Subsets\Subsets.csproj", "{3A2C3B54-B2F0-42DB-A15E-04863B2883A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unique Paths", "Unique Paths\Unique Paths.csproj", "{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unique Paths", "Unique Paths\Unique Paths.csproj", "{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remove Nth Node from End of List", "Remove Nth Node from End of List\Remove Nth Node from End of List.csproj", "{D50A5D84-8EA4-4DF6-9AA0-8BA5584062EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DB71A51-2DCA-42D1-A3F2-0641DC0EA56A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D50A5D84-8EA4-4DF6-9AA0-8BA5584062EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50A5D84-8EA4-4DF6-9AA0-8BA5584062EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50A5D84-8EA4-4DF6-9AA0-8BA5584062EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50A5D84-8EA4-4DF6-9AA0-8BA5584062EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

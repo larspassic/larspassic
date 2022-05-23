@@ -6,11 +6,40 @@ namespace Reverse_Integer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Please enter an integer to reverse:");
+            bool validNumberReceived = false;
 
-            string userInputString = Console.ReadLine();
+            int userInputInt = 0;
 
-            int userInputInt = int.Parse(userInputString);
+            while (validNumberReceived == false)
+            {
+
+                Console.WriteLine($"Please enter an integer to reverse:");
+
+                string userInputString = Console.ReadLine();
+
+                int number;
+
+                bool parseSuccessful = int.TryParse(userInputString, out number);
+                if (parseSuccessful == true)
+                {
+                    userInputInt = number;
+                    validNumberReceived = true;
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine($"Invalid number received. Next time, enter a valid integer between {int.MinValue} and {int.MaxValue}.\n");
+                }
+
+            }
+            
+            
+
+            
+
+            
+
+            
 
             Solution myClass = new Solution();
             

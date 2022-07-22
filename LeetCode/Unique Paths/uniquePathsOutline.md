@@ -5,6 +5,8 @@ https://leetcode.com/problems/unique-paths/
 
 Outline
 ===
+## Approach 1
+
 Example: Assume a 4 x 4 grid
 
 1. Count every possibility while increasing the x-axis by 1 each time.
@@ -21,3 +23,6 @@ Example: Assume a 4 x 4 grid
     - Down right down right down right
     - ???
 1. Remove any duplicates from the entire list of possibilities.
+
+## Approach 2
+1. Randomly alternate between down and right.

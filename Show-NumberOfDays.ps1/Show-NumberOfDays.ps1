@@ -1,5 +1,5 @@
 #Show-NumberOfDays.ps1
-#Popup the number of days since a specific date.
+#Popup the number of days since a specific date
 
 #Store the start dates as variables
 $dateDecember = Get-Date 12/6/2022 
@@ -14,8 +14,8 @@ $dateFebruaryDisplay = $dateFebruary.DateTime.Split(" ")[,0+1+2+3]
 
 
 #Subtract the start date from today's date to compute and output the number of days passed
-$daysDecember = ($today - $dateDecember).Days
-$daysFebruary = ($today - $dateFebruary).Days
+$daysDecember = ($dateToday - $dateDecember).Days
+$daysFebruary = ($dateToday - $dateFebruary).Days
 
 #Create the shell object
 $wshell = New-Object -ComObject Wscript.Shell

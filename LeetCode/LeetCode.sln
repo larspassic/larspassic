@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unique Paths", "Unique Path
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Remove Nth Node from End of List", "Remove Nth Node from End of List\Remove Nth Node from End of List.csproj", "{D50A5D84-8EA4-4DF6-9AA0-8BA5584062EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palindrome Number", "Palindrome Number\Palindrome Number.csproj", "{4EA6A5D4-CD24-4454-B744-2AE0803D747F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Palindrome Number", "Palindrome Number\Palindrome Number.csproj", "{4EA6A5D4-CD24-4454-B744-2AE0803D747F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestTimetoBuyandSellStock", "BestTimetoBuyandSellStock\BestTimetoBuyandSellStock.csproj", "{B87D9E1E-8A90-4F34-B4D7-D56312DDA1FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{4EA6A5D4-CD24-4454-B744-2AE0803D747F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA6A5D4-CD24-4454-B744-2AE0803D747F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA6A5D4-CD24-4454-B744-2AE0803D747F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B87D9E1E-8A90-4F34-B4D7-D56312DDA1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B87D9E1E-8A90-4F34-B4D7-D56312DDA1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B87D9E1E-8A90-4F34-B4D7-D56312DDA1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B87D9E1E-8A90-4F34-B4D7-D56312DDA1FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,15 +22,28 @@
 
             int[] prices = new int[] { 7, 1, 5, 3, 6, 4 };
 
-            int solution = MaxProfit(prices[]);
+            int solution = MaxProfit(prices);
         }
 
-        public int MaxProfit(int[] prices)
+        public static int MaxProfit(int[] prices)
         {
+            //Set up the variable to store the result.
             int result = 0;
 
+            //Set up a variable called "highestProfit" 
+
+            //Loop through prices array
+
+            //Subtract i+1 from i
+
+            //Store the result in highestProfit
+
+            //If the result is negative, or smaller than highestProfit, do nothing. Leave highestProfit as is.
+
+            //If the result is higher than highestProfit, replace highestProfit with current result
 
 
+            //Send the result back.
             return result;
         }
     }

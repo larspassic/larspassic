@@ -20,7 +20,7 @@
             Explanation: In this case, no transactions are done and the max profit = 0.
             */
 
-            int[] prices = new int[] { 7, 1, 5, 3, 6, 4 };
+            int[] prices = new int[] { 2, 1, 4 };
 
             int solution = MaxProfit(prices);
 
@@ -32,56 +32,36 @@
             //Set up the variable to store the result.
             int result = 0;
 
-            //Set up a variable called "highestProfit" 
+            //Set up a variable to store the currently highest profit
             int highestProfit = 0;
+            
+            //Set up a variable to keep track of the lowest possible buy price.
+            //If a better profit happened previously, then highestProfit should already have it.
+            int lowestBuyPrice = prices[0];
             
             
             //Loop through prices array
-            for (int i = 0; i < prices.Length; i++)
+            for (int i = 0; i < prices.Length - 1; i++)
             {
                 int subtractionResult = new int();
 
-                for (int j = i+1; j < prices.Length; j++)
+                //Since we found a new lowestBuyPrice
+                if (prices[i] < lowestBuyPrice)
                 {
-                    //If j is less than or equal to i, use continue to skip to the next iteration of the 'j' for loop.
-                    //This will help prevent selling stocks in the past.
-                    //What if I just assign j to be i+1 so I don't have to keep continuing past wasteful iterations?
-                    /*
-                    if (j <= i)
-                    {
-                        continue;
-                    }
-                    */
+                    //Set the new lowestBuyPrice
+                    lowestBuyPrice = prices[i];
 
-                    //Trying to speed this up by doing some testing prior to storing the result in subtractionResult.
-                    //If the sell date has a lower price than the buy date, going to be a loss, skip the whole loop.
-                    if (prices[j] <= prices[i])
-                    {
-                        continue;
-                    }
+                    //Since this sale will be a loss - skip this iteration of the loop //Note: my logic here was flawed.
+                    //continue; //This broke a test case so commenting it out.
+                }
 
-                    //Subtract j from i    //This is resulting in "buy high and sell low" results. Will need to fix.
-                    subtractionResult = prices[j] - prices[i];
+                //Perform the math to get current iteration's profit
+                subtractionResult = prices[i+1] - lowestBuyPrice;
 
-                    //If the result is negative, or smaller than highestProfit, do nothing. Leave highestProfit as is.
-                    //Since I have eliminated losses above,
-                    //and I am implicitly filtering out values that are lower than highestProfit below,
-                    //I will try to comment this section out completely to save processing time.
-
-                    /*
-                    if (subtractionResult < 0 || subtractionResult < highestProfit)
-                    {
-                        //Use the continue keyword to skip the remainder of this 'j' for loop iteration
-                        continue;
-                    }
-                    */
-
-                    //If the result is higher than highestProfit, replace highestProfit with current result
-                    if (subtractionResult > highestProfit)
-                    {
-                        highestProfit = subtractionResult;
-                    }
-
+                //Check to see if we have found a new high profit, and if so, store the result
+                if (subtractionResult > highestProfit)
+                {
+                    highestProfit = subtractionResult;
                 }
 
             }

@@ -12,30 +12,31 @@ namespace Subsets // Note: actual namespace depends on the project name.
     {
         public static void Main(string[] args)
         {
+            //This will be where we stage the problem for testing here in Visual Studio
+            //Instructions from Leetcode:
+            /*
+             Given an integer array nums of unique elements, return all possible subsets (the power set).
+
+             The solution set must not contain duplicate subsets. Return the solution in any order.
+             */
+
+
             Console.WriteLine("Hello World!");
 
             int[] nums = { 1, 2, 3};
 
             Console.WriteLine(nums);
         }
-    }
-
-    //Do I need this?
-    public interface IList
-    {
-
-    }
-
-    public class Solution
-    {
+        
         //This came directly from LeetCode
         public IList<IList<int>> Subsets(int[] nums)
         {
             //Stuck setting up the problem
             //Just trying to set up an empty object to store the result
-            IList<IList<int>>  result = new IList<IList<int>>;
+            IList<IList<int>> result = new IList<IList<int>>;
 
             return result;
         }
+
     }
 }

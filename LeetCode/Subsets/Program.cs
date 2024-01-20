@@ -4,7 +4,6 @@
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Subsets // Note: actual namespace depends on the project name.
 {
@@ -23,20 +22,68 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
             Console.WriteLine("Hello World!");
 
-            int[] nums = { 1, 2, 3};
+            int[] nums = { 1, 2, 3 };
 
-            Console.WriteLine(nums);
+            foreach (int i in nums)
+            {
+                Console.WriteLine(i);
+            }
+
+            IList<IList<int>> finalResult = Subsets(nums);
+
+            Console.WriteLine("All done!");
         }
         
         //This came directly from LeetCode
-        public IList<IList<int>> Subsets(int[] nums)
+        public static IList<IList<int>> Subsets(int[] nums)
         {
             //Stuck setting up the problem
             //Just trying to set up an empty object to store the result
-            IList<IList<int>> result = new IList<IList<int>>;
+            //Fixed this by taking away the I in "IList" after new. I do not know why this works, but I will move forward for now.
+            IList<IList<int>> result = new List<IList<int>>();
+
+            //Establish a variable for working with subsets.
+            List<int> currentList = new List<int>();
+
+            //Outer loop to begin with each element of nums
+            for (int i = 0; i < nums.Length; i++)
+            {
+                //Search the result list and try to add
+                if (result.Contains(currentList) == false)
+                {
+                    result.Add(currentList);
+                }
+
+                //Add the current index to the working set
+                currentList.Add(nums[i]);
+
+                //Inner loop to go through and add remaining values one at a time
+                for (int j = i+1; j < nums.Length; j++)
+                {
+                    //Re-establish the sub-working-set using the current list
+                    List<int> testList = currentList;
+
+                    //Add the next element from the inner loop index
+                    testList.Add(nums[j]);
+
+                    //Search the result list and try to add
+                    if (result.Contains(testList) == false)
+                    {
+                        result.Add(testList);
+                    }
+                }
+            }
+
+            
 
             return result;
         }
 
+
     }
 }
+
+
+
+
+

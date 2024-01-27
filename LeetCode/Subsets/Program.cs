@@ -23,6 +23,7 @@ namespace Subsets // Note: actual namespace depends on the project name.
             Console.WriteLine("Hello World!");
             Console.WriteLine("Input:");
             int[] nums = { 1, 2, 3 };
+            //int[] nums = { 0 };
 
             foreach (int i in nums)
             {
@@ -48,40 +49,54 @@ namespace Subsets // Note: actual namespace depends on the project name.
             //Fixed this by taking away the I in "IList" after new. I do not know why this works, but I will move forward for now.
             IList<IList<int>> result = new List<IList<int>>();
 
-            //Establish a variable for working with subsets.
-            List<int> currentList = new List<int>();
+
 
             //Since leetcode says "A subset of an array is a selection of elements (possibly none) of the array."
             //Need to account for "possibly none" by adding currentList immediately in to the result.
-            result.Add(currentList.ToList());
+            result.Add(new List<int>());
 
             //Outer loop to begin with each element of nums
+            
             for (int i = 0; i < nums.Length; i++)
             {
+                //Establish a variable for working with subsets.
+                List<int> currentList = new List<int>();
+
+
+                /*
                 //Search the result list and try to add
-                if (result.Contains(currentList) == false)
+                if (result.Contains(currentList.ToList()) == false)
                 {
-                    result.Add(currentList);
+                    result.Add(currentList.ToList());
                 }
+                */
 
                 //Add the current index to the working set
                 currentList.Add(nums[i]);
-
+                result.Add(currentList.ToList());
+                
                 //Inner loop to go through and add remaining values one at a time
                 for (int j = i+1; j < nums.Length; j++)
                 {
                     //Re-establish the sub-working-set using the current list
                     List<int> testList = currentList;
 
+                    //testList.Add(nums[i]);
+
                     //Add the next element from the inner loop index
                     testList.Add(nums[j]);
 
                     //Search the result list and try to add
+                    /*
                     if (result.Contains(testList) == false)
                     {
                         result.Add(testList);
                     }
+                    */
+
+                    result.Add(testList.ToList());
                 }
+                
             }
 
             

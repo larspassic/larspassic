@@ -21,7 +21,7 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
 
             Console.WriteLine("Hello World!");
-
+            Console.WriteLine("Input:");
             int[] nums = { 1, 2, 3 };
 
             foreach (int i in nums)
@@ -29,7 +29,13 @@ namespace Subsets // Note: actual namespace depends on the project name.
                 Console.WriteLine(i);
             }
 
+            Console.WriteLine("Result:");
             IList<IList<int>> finalResult = Subsets(nums);
+
+            foreach (var resultItem in finalResult)
+            {
+                Console.WriteLine(resultItem.ToString());
+            }
 
             Console.WriteLine("All done!");
         }
@@ -44,6 +50,10 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
             //Establish a variable for working with subsets.
             List<int> currentList = new List<int>();
+
+            //Since leetcode says "A subset of an array is a selection of elements (possibly none) of the array."
+            //Need to account for "possibly none" by adding currentList immediately in to the result.
+            result.Add(currentList.ToList());
 
             //Outer loop to begin with each element of nums
             for (int i = 0; i < nums.Length; i++)
@@ -77,6 +87,7 @@ namespace Subsets // Note: actual namespace depends on the project name.
             
 
             return result;
+            //Copy inside here and send to leetcode
         }
 
 

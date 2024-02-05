@@ -20,24 +20,39 @@ namespace Subsets // Note: actual namespace depends on the project name.
              */
 
 
-            Console.WriteLine("Hello World!");
             Console.WriteLine("Input:");
-            int[] nums = { 1, 2, 3 };
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //int[] nums = { 1, 2, 3 };
             //int[] nums = { 0 };
 
             foreach (int i in nums)
             {
-                Console.WriteLine(i);
+                Console.Write(i+",");
             }
 
+
+
+            //This section will output the results:
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("Result:");
             IList<IList<int>> finalResult = Subsets(nums);
 
             foreach (var resultItem in finalResult)
             {
-                Console.WriteLine(resultItem.ToString());
+                //Indicate that this is a new result
+                Console.Write("List: ");
+
+                foreach (var item in resultItem)
+                {
+                    Console.Write(item.ToString()+",");
+                }
+                
+                //Go down to the next line to make the next result look nice.
+                Console.WriteLine();
             }
 
+            Console.WriteLine();
             Console.WriteLine("All done!");
         }
         
@@ -49,14 +64,11 @@ namespace Subsets // Note: actual namespace depends on the project name.
             //Fixed this by taking away the I in "IList" after new. I do not know why this works, but I will move forward for now.
             IList<IList<int>> result = new List<IList<int>>();
 
-
-
             //Since leetcode says "A subset of an array is a selection of elements (possibly none) of the array."
             //Need to account for "possibly none" by adding currentList immediately in to the result.
             result.Add(new List<int>());
 
             //Outer loop to begin with each element of nums
-            
             for (int i = 0; i < nums.Length; i++)
             {
                 //Establish a variable for working with subsets.
@@ -99,10 +111,22 @@ namespace Subsets // Note: actual namespace depends on the project name.
                 
             }
 
-            
+            IList<IList<int>> skipList = new List<IList<int>>();
+
+            //Build up skiplist to be a copy of nums.
+            foreach (int num in nums)
+            {
+                skipList.Add(num);
+            }
+
+            //Section to skip numbers in the middle
+            for (int k = 0; k < nums.Length; k++)
+            {
+                
+            }
 
             return result;
-            //Copy inside here and send to leetcode
+            //Copy above here and send to leetcode
         }
 
 

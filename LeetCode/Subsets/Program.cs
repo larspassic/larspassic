@@ -21,9 +21,13 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
 
             Console.WriteLine("Input:");
-            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            //int[] nums = { 1, 2, 3 };
+            //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] nums = { 1, 2, 3 };
             //int[] nums = { 0 };
+
+            //Testcase that I failed:
+            //Expected output: [[],[3],[2],[2,3],[4],[3,4],[2,4],[2,3,4],[1],[1,3],[1,2],[1,2,3],[1,4],[1,3,4],[1,2,4],[1,2,3,4]]
+            //int[] nums = { 3, 2, 4, 1 };
 
             foreach (int i in nums)
             {
@@ -111,18 +115,35 @@ namespace Subsets // Note: actual namespace depends on the project name.
                 
             }
 
-            IList<IList<int>> skipList = new List<IList<int>>();
-
-            //Build up skiplist to be a copy of nums.
-            foreach (int num in nums)
-            {
-                skipList.Add(num);
-            }
-
             //Section to skip numbers in the middle
             for (int k = 0; k < nums.Length; k++)
             {
-                
+                //Temporary working list that is a copy of nums
+                List<int> skipList = nums.ToList();
+
+                //Remove the number at the index of k
+                skipList.RemoveAt(k);
+
+                bool listMatchFound = false;
+
+                //If the current skip list is not already contained in result, add skipList to the result list
+                foreach (var list in result)
+                {
+
+                    //Check if the sequence of list is equal to skipList
+                    if (list.SequenceEqual(skipList))
+                    {
+                        //Only set this to true if a positive list match has been found
+                        listMatchFound = true;
+                    }
+                }
+
+                //If the listMatchFound is still false, no duplicates
+                if (listMatchFound == false)
+                {
+                    result.Add(skipList);
+                }
+
             }
 
             return result;

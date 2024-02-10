@@ -22,7 +22,8 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
             Console.WriteLine("Input:");
             //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            int[] nums = { 1, 2, 3 };
+            //int[] nums = { 1, 2, 3 };
+            int[] nums = { 1, 2, 3, 4, 5 };
             //int[] nums = { 0 };
 
             //Testcase that I failed:

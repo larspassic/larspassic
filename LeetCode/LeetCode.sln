@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Palindrome Number", "Palind
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestTimetoBuyandSellStock", "BestTimetoBuyandSellStock\BestTimetoBuyandSellStock.csproj", "{B87D9E1E-8A90-4F34-B4D7-D56312DDA1FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concatenation of Array", "Concatenation of Array\Concatenation of Array.csproj", "{0A5BE7ED-DD46-405C-8EE9-8499B47333A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concatenation of Array", "Concatenation of Array\Concatenation of Array.csproj", "{0A5BE7ED-DD46-405C-8EE9-8499B47333A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Defanging an IP Address", "Defanging an IP Address\Defanging an IP Address.csproj", "{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{0A5BE7ED-DD46-405C-8EE9-8499B47333A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5BE7ED-DD46-405C-8EE9-8499B47333A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5BE7ED-DD46-405C-8EE9-8499B47333A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

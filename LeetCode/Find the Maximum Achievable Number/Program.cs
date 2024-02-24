@@ -20,145 +20,65 @@
         public static int TheMaximumAchievableX(int num, int t)
         {
             int maxAchievableNumber = 0;
-            int x = 0;
 
-            bool boolPlusPlusMatchFound = false;
-            bool boolPlusMinusMatchFound = false;
-            bool boolMinusPlusMatchFound = false;
-            bool boolMinusMinusMatchFound = false;
+            //////////////////
+            //plusPlus section
+            //////////////////
+            //Leetcode states that num will never be a negative number (num >= 1)
+            //So no reason to do a bunch of logic here
+            //This case is for when x == num because +1 and +1 will always result in an achievable number.
+            //So max achievable number is always num
+            //So just store num as a max achievable number.
 
-            //Encapsulate all possibilities in a huge loop to keep iterating until something is found.
-            //The leetcode instructions say that there will always be a result.
-            while (x <= int.MaxValue)
+            //Just need to protect for the special case where num is the largest integer
+            if (num < (int.MaxValue))
             {
+                maxAchievableNumber = num;
+            }
 
+            //////////////////
+            //minusMinus section
+            //////////////////
+            //This section should have the same principle has the plusPlus section
+            //Even if x == num and num == 1 then we can still -1 and -1 and still find an equal number.
+            //But we have already covered the x == num use-case above in the plusPlus section,
+            //So no code is needed here.
 
-                //////////////////
-                //plusPlus section
-                //////////////////
-                int plusPlusnum = num;
-                int plusPlusX = x;
+            //////////////////
+            //plusMinus section
+            //////////////////
+            //This section is where num is lower than x
+            //So x will be t x 2 steps away from num
+            int maxDistance = t * 2;
+            
+            //Need to protect for the case where num + (t x 2) goes over the max int value
+            //So if that is the case, just store the int max value as max achievable number
+            if (num+maxDistance > int.MaxValue)
+            {
+                maxAchievableNumber = int.MaxValue;
+            }
+            //If the current max number is smaller
+            else if (maxAchievableNumber < num + maxDistance)
+            {
+                //Then store the result
+                maxAchievableNumber = num + maxDistance;
+            }
+             
 
-                //Code which executes the wishes of "t"
-                for (int i = 0; i < t; i++)
-                {
-                    plusPlusnum++;
-                    plusPlusX++;
+            //////////////////
+            //minusPlus section
+            //////////////////
+            //In this case, num is always higher than x
+            //Since we're looking for the largest POSITIVE numbers
+            //The largest number in this case is always num-2
+            //Because x did +1 and num did -1
+            //And that will be the least small possible value for x
 
-                    //Always check if the two numbers are equal. That's what we want.
-                    if (plusPlusX == plusPlusnum)
-                    {
-                        break;
-                    }
-                }
-
-                //If we got to the end and found a match 
-                if (plusPlusX == plusPlusnum)
-                {
-                    //AND the x number is larger than the current max achievable number
-                    if (x > maxAchievableNumber)
-                    {
-                        //Store the new max achievable number
-                        maxAchievableNumber = x;
-                        boolPlusPlusMatchFound = true;
-                    }
-                }
-
-                //////////////////
-                //plusMinus section
-                //////////////////
-                int plusMinusnum = num;
-                int plusMinusX = x;
-
-                //Code which executes the wishes of "t"
-                for (int i = 0; i < t; i++)
-                {
-                    plusMinusnum++;
-                    plusMinusX--;
-
-                    //Always check if the two numbers are equal. That's what we want.
-                    if (plusMinusX == plusMinusnum)
-                    {
-                        break;
-                    }
-                }
-
-                //If we got to the end and found a match 
-                if (plusMinusX == plusMinusnum)
-                {
-                    //AND the x number is larger than the current max achievable number
-                    if (x > maxAchievableNumber)
-                    {
-                        //Store the new max achievable number
-                        maxAchievableNumber = x;
-                        boolPlusMinusMatchFound = true;
-                    }
-                }
-
-                //////////////////
-                //minusPlus section
-                //////////////////
-                int minusPlusnum = num;
-                int minusPlusX = x;
-
-                //code which executes the wishes of "t"
-                for (int i = 0; i < t; i++)
-                {
-                    minusPlusnum--;
-                    minusPlusX++;
-
-                    //Always check if the two numbers are equal.
-                    if (minusPlusX == minusPlusnum)
-                    {
-                        break;
-                    }
-                }
-
-                //If we got to the end and found a match
-                if (minusPlusX == minusPlusnum)
-                {
-                    //And if the x variable we were using is larger than the current max
-                    if (x > maxAchievableNumber)
-                    {
-                        //Store the new max achievable number
-                        maxAchievableNumber = x;
-                        boolMinusPlusMatchFound = true;
-                    }
-                }
-
-                //////////////////
-                //minusMinus section
-                //////////////////
-                int minusMinusnum = num;
-                int minusMinusX = x;
-
-                //code which executes the wishes of "t"
-                for (int i = 0; i < t; i++)
-                {
-                    minusMinusnum--;
-                    minusMinusX--;
-
-                    //Check to see if we found a match
-                    if (minusMinusnum == minusMinusX)
-                    {
-                        break;
-                    }
-                }
-
-                //If we got to the end nad found a match
-                if (minusMinusX == minusMinusnum)
-                {
-                    //And the x variable is larger than the current max
-                    if (x > maxAchievableNumber)
-                    {
-                        //Store the new max achievable number
-                        maxAchievableNumber = x;
-                        boolMinusMinusMatchFound = true;
-                    }
-                }
-                
-                //Iterate the starting number for the large while loop
-                x++;
+            //Only store this value if num-2 is larger
+            if (maxAchievableNumber < (num-2))
+            {
+                //Store the result
+                maxAchievableNumber = num - 2;
             }
 
             return maxAchievableNumber;

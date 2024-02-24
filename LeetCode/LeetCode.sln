@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concatenation of Array", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Defanging an IP Address", "Defanging an IP Address\Defanging an IP Address.csproj", "{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Find the Maximum Achievable Number", "Find the Maximum Achievable Number\Find the Maximum Achievable Number.csproj", "{BAB2AAB7-4CC8-47F6-BA57-644A83CC18D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9D22B65-209F-4479-BBB2-B8D241DE7D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB2AAB7-4CC8-47F6-BA57-644A83CC18D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB2AAB7-4CC8-47F6-BA57-644A83CC18D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB2AAB7-4CC8-47F6-BA57-644A83CC18D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB2AAB7-4CC8-47F6-BA57-644A83CC18D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

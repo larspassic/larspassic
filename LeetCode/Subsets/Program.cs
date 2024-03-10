@@ -4,6 +4,7 @@
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Subsets // Note: actual namespace depends on the project name.
 {
@@ -21,9 +22,9 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
 
             Console.WriteLine("Input:");
-            //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             //int[] nums = { 1, 2, 3 };
-            int[] nums = { 1, 2, 3, 4, 5 };
+            //int[] nums = { 1, 2, 3, 4, 5 };
             //int[] nums = { 0 };
 
             //Testcase that I failed:
@@ -74,22 +75,16 @@ namespace Subsets // Note: actual namespace depends on the project name.
             result.Add(new List<int>());
 
             //Outer loop to begin with each element of nums
+            //This loop is very "sequential" and does not need any duplicate checking or de-duplication.
             for (int i = 0; i < nums.Length; i++)
             {
                 //Establish a variable for working with subsets.
                 List<int> currentList = new List<int>();
 
-
-                /*
-                //Search the result list and try to add
-                if (result.Contains(currentList.ToList()) == false)
-                {
-                    result.Add(currentList.ToList());
-                }
-                */
-
                 //Add the current index to the working set
                 currentList.Add(nums[i]);
+
+                //Add the current working set to the result
                 result.Add(currentList.ToList());
                 
                 //Inner loop to go through and add remaining values one at a time
@@ -103,46 +98,62 @@ namespace Subsets // Note: actual namespace depends on the project name.
                     //Add the next element from the inner loop index
                     testList.Add(nums[j]);
 
-                    //Search the result list and try to add
-                    /*
-                    if (result.Contains(testList) == false)
-                    {
-                        result.Add(testList);
-                    }
-                    */
-
+                    //Add the sub-working-set to the result
                     result.Add(testList.ToList());
                 }
                 
             }
 
-            //Section to skip numbers in the middle
-            for (int k = 0; k < nums.Length; k++)
+            //Section to start from the end of nums and decrement
+            for (int k = nums.Length-1; k > -1; k--)
             {
-                //Temporary working list that is a copy of nums
-                List<int> skipList = nums.ToList();
+                //Temporary working list
+                IList<IList<int>> decrementList = new List<IList<int>>();
 
-                //Remove the number at the index of k
-                skipList.RemoveAt(k);
-
-                bool listMatchFound = false;
-
-                //If the current skip list is not already contained in result, add skipList to the result list
-                foreach (var list in result)
+                //Build the decrement list by iterating through result, we are going to add k items 
+                for (int l = 0; l < result.Count; l++)
                 {
+                    //Set up variables to use within while loop
+                    var currentDecrementItem = result[l];
 
-                    //Check if the sequence of list is equal to skipList
-                    if (list.SequenceEqual(skipList))
+                    //Small loop to work through all of the items to the right of k
+                    for (int m = k;  m < nums.Length; m++)
                     {
-                        //Only set this to true if a positive list match has been found
-                        listMatchFound = true;
-                    }
-                }
+                        //Add the k number to the list that was pulled from result
+                        currentDecrementItem.Add(nums[m]);
 
-                //If the listMatchFound is still false, no duplicates
-                if (listMatchFound == false)
+                        //Store current progress to the decrement list as a list
+                        decrementList.Add(currentDecrementItem.ToList());
+                    }
+
+
+                }
+                
+                //Make a copy of result state going in to the check
+                var resultCount = result.Count;
+
+                //Need to check each list in decrement list
+                foreach (IList<int> item in decrementList)
                 {
-                    result.Add(skipList);
+
+
+                    //Against each list in result
+                    for (int n = 0; n < resultCount; n++)
+                    {
+                        
+                        //if they match
+                        if (item.SequenceEqual(result[n]))
+                        {
+                            //Since this is a dupe, skip this list in decrementList and don't add it to the result
+                            continue;
+                        }
+                        else
+                        {
+                            //Since this is not a dupe, add this list to the result
+                            result.Add(item);
+                        }
+                    }                   
+                
                 }
 
             }

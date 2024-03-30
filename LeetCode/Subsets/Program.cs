@@ -22,8 +22,8 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
 
             Console.WriteLine("Input:");
-            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            //int[] nums = { 1, 2, 3 };
+            //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] nums = { 1, 2, 3 };
             //int[] nums = { 1, 2, 3, 4, 5 };
             //int[] nums = { 0 };
 
@@ -104,6 +104,8 @@ namespace Subsets // Note: actual namespace depends on the project name.
                 
             }
 
+            // 3/29/2024 - Problem is somewhere below
+
             //Section to start from the end of nums and decrement
             for (int k = nums.Length-1; k > -1; k--)
             {
@@ -150,13 +152,15 @@ namespace Subsets // Note: actual namespace depends on the project name.
                         else
                         {
                             //Since this is not a dupe, add this list to the result
-                            result.Add(item);
+                            //result.Add(item);
                         }
                     }                   
                 
                 }
 
             }
+
+            
 
             return result;
             //Copy above here and send to leetcode

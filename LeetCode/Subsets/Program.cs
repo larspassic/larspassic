@@ -106,60 +106,7 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
             // 3/29/2024 - Problem is somewhere below
 
-            //Section to start from the end of nums and decrement
-            for (int k = nums.Length-1; k > -1; k--)
-            {
-                //Temporary working list
-                IList<IList<int>> decrementList = new List<IList<int>>();
-
-                //Build the decrement list by iterating through result, we are going to add k items 
-                for (int l = 0; l < result.Count; l++)
-                {
-                    //Set up variables to use within while loop
-                    var currentDecrementItem = result[l];
-
-                    //Small loop to work through all of the items to the right of k
-                    for (int m = k;  m < nums.Length; m++)
-                    {
-                        //Add the k number to the list that was pulled from result
-                        currentDecrementItem.Add(nums[m]);
-
-                        //Store current progress to the decrement list as a list
-                        decrementList.Add(currentDecrementItem.ToList());
-                    }
-
-
-                }
-                
-                //Make a copy of result state going in to the check
-                var resultCount = result.Count;
-
-                //Need to check each list in decrement list
-                foreach (IList<int> item in decrementList)
-                {
-
-
-                    //Against each list in result
-                    for (int n = 0; n < resultCount; n++)
-                    {
-                        
-                        //if they match
-                        if (item.SequenceEqual(result[n]))
-                        {
-                            //Since this is a dupe, skip this list in decrementList and don't add it to the result
-                            continue;
-                        }
-                        else
-                        {
-                            //Since this is not a dupe, add this list to the result
-                            //result.Add(item);
-                        }
-                    }                   
-                
-                }
-
-            }
-
+            
             
 
             return result;

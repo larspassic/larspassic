@@ -12,7 +12,7 @@ namespace Merge_Two_Sorted_Lists
             
             ListNode solution = MergeTwoLists(l1,l2);
 
-            Console.WriteLine($"{solution}");
+            Console.WriteLine($"{solution.val}");
         }
 
 
@@ -31,6 +31,23 @@ namespace Merge_Two_Sorted_Lists
         public static ListNode MergeTwoLists(ListNode l1, ListNode l2)
         {
             ListNode result = new ListNode();
+
+            //Find the lower number to set as the "val" of the result list.
+            if (l1.val < l2.val)
+            {
+                result.val = l1.val;
+            }
+            else if (l1.val > l2.val)
+            {
+                result.val = l2.val;
+            }
+            else if(l1.val == l2.val)
+            {
+                result.val = l1.val;
+                result.next = l2;
+            }
+
+            
 
             return result;
         }

@@ -22,10 +22,10 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
 
             Console.WriteLine("Input:");
-            //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //int[] nums = { 0 };
             int[] nums = { 1, 2, 3 };
             //int[] nums = { 1, 2, 3, 4, 5 };
-            //int[] nums = { 0 };
+            //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
             //Testcase that I failed:
             //Expected output: [[],[3],[2],[2,3],[4],[3,4],[2,4],[2,3,4],[1],[1,3],[1,2],[1,2,3],[1,4],[1,3,4],[1,2,4],[1,2,3,4]]
@@ -69,6 +69,8 @@ namespace Subsets // Note: actual namespace depends on the project name.
             //Just trying to set up an empty object to store the result
             //Fixed this by taking away the I in "IList" after new. I do not know why this works, but I will move forward for now.
             IList<IList<int>> result = new List<IList<int>>();
+
+            //4.26.2024 - need to use recursion to get a minimally functional version of below code to call the function within itself.
 
             //Since leetcode says "A subset of an array is a selection of elements (possibly none) of the array."
             //Need to account for "possibly none" by adding currentList immediately in to the result.

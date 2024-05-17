@@ -65,51 +65,13 @@ namespace Subsets // Note: actual namespace depends on the project name.
         //This came directly from LeetCode
         public static IList<IList<int>> Subsets(int[] nums)
         {
-            //Stuck setting up the problem
-            //Just trying to set up an empty object to store the result
-            //Fixed this by taking away the I in "IList" after new. I do not know why this works, but I will move forward for now.
+            //Setting up the problem
             IList<IList<int>> result = new List<IList<int>>();
-
-            //4.26.2024 - need to use recursion to get a minimally functional version of below code to call the function within itself.
 
             //Since leetcode says "A subset of an array is a selection of elements (possibly none) of the array."
             //Need to account for "possibly none" by adding currentList immediately in to the result.
             result.Add(new List<int>());
-
-            //Outer loop to begin with each element of nums
-            //This loop is very "sequential" and does not need any duplicate checking or de-duplication.
-            for (int i = 0; i < nums.Length; i++)
-            {
-                //Establish a variable for working with subsets.
-                List<int> currentList = new List<int>();
-
-                //Add the current index to the working set
-                currentList.Add(nums[i]);
-
-                //Add the current working set to the result
-                result.Add(currentList.ToList());
-                
-                //Inner loop to go through and add remaining values one at a time
-                for (int j = i+1; j < nums.Length; j++)
-                {
-                    //Re-establish the sub-working-set using the current list
-                    List<int> testList = currentList;
-
-                    //testList.Add(nums[i]);
-
-                    //Add the next element from the inner loop index
-                    testList.Add(nums[j]);
-
-                    //Add the sub-working-set to the result
-                    result.Add(testList.ToList());
-                }
-                
-            }
-
-            // 3/29/2024 - Problem is somewhere below
-
-            
-            
+                        
 
             return result;
             //Copy above here and send to leetcode

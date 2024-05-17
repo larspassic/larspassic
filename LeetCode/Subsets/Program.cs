@@ -23,8 +23,9 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
             Console.WriteLine("Input:");
             //int[] nums = { 0 };
-            int[] nums = { 1, 2, 3 };
+            //int[] nums = { 1, 2, 3 };
             //int[] nums = { 1, 2, 3, 4, 5 };
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
             //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
             //Testcase that I failed:
@@ -71,7 +72,32 @@ namespace Subsets // Note: actual namespace depends on the project name.
             //Since leetcode says "A subset of an array is a selection of elements (possibly none) of the array."
             //Need to account for "possibly none" by adding currentList immediately in to the result.
             result.Add(new List<int>());
-                        
+
+            //This section I will find out how many bits are in nums
+            int bitCount = nums.Length;
+
+            //This section I will find the total number of possible numbers by multiplying 2^bits
+            int totalNumbers = 1;
+            for (int i = 0; i < bitCount; i++)
+            {
+                totalNumbers = totalNumbers * 2;
+            }
+
+            //This section I will walk through every possible number by converting that number to binary and storing it as a list
+            IList<IList<int>> binaryNumbers = new List<IList<int>>();
+
+            for (int i = 0; i < totalNumbers; i++)
+            {
+                i
+            }
+
+            //This section I will walk through every binary value
+
+            //When the bit is 0, do nothing
+
+            //When the bit is 1, add to the current subset
+
+            //Store the subset in to result
 
             return result;
             //Copy above here and send to leetcode

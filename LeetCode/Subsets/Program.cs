@@ -71,7 +71,7 @@ namespace Subsets // Note: actual namespace depends on the project name.
 
             //Since leetcode says "A subset of an array is a selection of elements (possibly none) of the array."
             //Need to account for "possibly none" by adding currentList immediately in to the result.
-            result.Add(new List<int>());
+            // result.Add(new List<int>()); //looks like this is no longer needed due to "binary representation" strategy
 
             //This section I will find out how many bits are in nums
             int bitCount = nums.Length;
@@ -84,20 +84,41 @@ namespace Subsets // Note: actual namespace depends on the project name.
             }
 
             //This section I will walk through every possible number by converting that number to binary and storing it as a list
-            IList<IList<int>> binaryNumbers = new List<IList<int>>();
+            IList<string> binaryNumbers = new List<string>();
 
             for (int i = 0; i < totalNumbers; i++)
             {
-                i
+                //First convert the number to a string using "base 2" aka binary
+                //Also, make sure that the number has enough binary digits
+                //We should have the same number of binary digits as bitCount
+                string binaryString = Convert.ToString(i, 2).PadLeft(bitCount, '0');
+                binaryNumbers.Add(binaryString);
             }
 
             //This section I will walk through every binary value
+            for (int i = 0; i < binaryNumbers.Count; i++)
+            {
+                //Make a list of ints to hold the working subset for this binary number.
+                List<int> currentSubset = new List<int>();
+                
+                //Make a string which is just the number we're working on right now.
+                string currentBinary = binaryNumbers[i];
 
-            //When the bit is 0, do nothing
+                //Loop through each char of the currentBinary string
+                for (int j = 0; j < currentBinary.Length; j++)
+                {
+                    //Only add the subset from nums if the char from the binary string was 1
+                    if (currentBinary[j].ToString() == "1")
+                    {
+                        currentSubset.Add(nums[j]);
+                    }
+                    
+                    //Do nothing if the char from the binary string was 0
+                }
 
-            //When the bit is 1, add to the current subset
+                result.Add(currentSubset);
+            }
 
-            //Store the subset in to result
 
             return result;
             //Copy above here and send to leetcode

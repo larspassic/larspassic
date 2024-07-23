@@ -6,11 +6,18 @@ namespace Merge_Two_Sorted_Lists
     {
         static void Main(string[] args)
         {
-            ListNode l1 = new ListNode();
-            ListNode l2 = new ListNode();
+            //Create list1 by walking through each node
+            ListNode list1 = new ListNode(1);
+            list1.next = new ListNode(2);
+            list1.next.next = new ListNode(4);
+
+            //Create list2 by walking through each node
+            ListNode list2 = new ListNode(1);
+            list2.next = new ListNode(3);
+            list2.next.next = new ListNode(4);
 
             
-            ListNode solution = MergeTwoLists(l1,l2);
+            ListNode solution = MergeTwoLists(list1,list2);
 
             Console.WriteLine($"{solution.val}");
         }
@@ -21,6 +28,8 @@ namespace Merge_Two_Sorted_Lists
         {
             public int val;
             public ListNode next;
+            
+            //This is the constructor
             public ListNode(int val = 0, ListNode next = null)
             {
                 this.val = val;
@@ -44,7 +53,7 @@ namespace Merge_Two_Sorted_Lists
             else if(l1.val == l2.val)
             {
                 result.val = l1.val;
-                result.next = l2;
+                result.next = l2.next;
             }
 
             

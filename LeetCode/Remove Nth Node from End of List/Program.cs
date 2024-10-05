@@ -10,11 +10,11 @@ namespace Remove_Nth_Node_from_End_of_List
 
             ListNode head = new ListNode(1);
             head.next = new ListNode(2);
-            //head.next.next = new ListNode(3); 
+            head.next.next = new ListNode(3); 
             //head.next.next.next = new ListNode(4); 
             //head.next.next.next.next = new ListNode(5);
 
-            int n = 2;
+            int n = 3;
 
             ListNode displayResult = RemoveNthFromEnd(head, n);
         }
@@ -43,7 +43,13 @@ namespace Remove_Nth_Node_from_End_of_List
             }
 
             //Now that we know the size of the ListNode, only do this work if it's larger than 2
-            if (listNodeSize > 2)
+            if (listNodeSize == n)
+            {
+                //If the size of the list and n are the same
+                //That means, remove the head of the list. So put this case first.
+                result = result.next;
+            }
+            else if (listNodeSize > 2)
             {
                 //Move through the ListNode object until we reach size minus n,
                 //to find the node prior to the one that needs to be removed.
@@ -61,26 +67,12 @@ namespace Remove_Nth_Node_from_End_of_List
                 listWalker.next = newTail;
 
             }
-            //Sinse listnode only 2 long can't do a .next.next, create a special section
-            else if (listNodeSize == 2 && n == 2)
-            {
-                //Code that will remove the head by walking forward
-                listWalker = listWalker.next;
-                
-                //newTail started as null so null out the next
-                listWalker.next = newTail;
-            }
             //Special section to remove last number
             else if (listNodeSize == 2 && n == 1)
             {
                 listWalker.next = null;
             }
-            else
-            {
-                //n will always equal at least 1, so this is that case.
-                //listNodeSize was not greater than 1, and n is 1, so just return null.
-                result = result.next;
-            }
+
 
 
 

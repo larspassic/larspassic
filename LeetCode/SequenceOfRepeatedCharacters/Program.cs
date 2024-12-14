@@ -6,6 +6,7 @@ namespace SequenceOfRepeatedCharacters
         static void Main(string[] args)
         {
             string inputSequence = "AAAABBB1111CCCDD";
+            //string inputSequence = "AAAAAAAAABBB1111CCCDD";
 
             Console.WriteLine($"The input string sequence is: {inputSequence}");
             Console.WriteLine();
@@ -28,6 +29,7 @@ namespace SequenceOfRepeatedCharacters
             int currentCharCount = 0;
             string compressedString = string.Empty;
 
+            //Counting the number of times a character is repeated
             for (int i = 0; i < uncompressedString.Length; i++)
             {
                 //If the current char was found at index i
@@ -50,6 +52,7 @@ namespace SequenceOfRepeatedCharacters
 
             }
             
+            //Adding to the compressed string
             compressedString += (currentCharCount.ToString() + currentChar.ToString());
 
             return compressedString;
